@@ -53,8 +53,8 @@ public class Controller {
         this.currentClasses = new HashSet<>();
 
         this.timeLookup = new HashMap<>();
-        String[] times = new String[]{"10:00AM", "10:30AM", "11:00AM", "11:30AM",
-                                      "12:00PM", "12:30PM", "1:00PM", "1:30PM", "2:00PM", "2:30PM", "3:00PM", "3:30PM"};
+        String[] times = new String[]{"8:00AM", "8:30AM", "9:00AM", "9:30AM", "10:00AM", "10:30AM", "11:00AM", "11:30AM",
+                                      "12:00PM", "12:30PM", "1:00PM", "1:30PM", "2:00PM", "2:30PM", "3:00PM", "3:30PM", "4:00AM"};
 
         for (int i = 0; i < times.length; i++) {
             timeLookup.put(times[i], i+1);
