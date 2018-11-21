@@ -66,9 +66,20 @@ public class Controller {
     }
 
     @FXML
+    private void closeWindow(ActionEvent event) {
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
     private void submitSchedule() {
         try {
-            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("submit.fxml")), 500, 500);
+            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("submit.fxml")));
+            VBox list = (VBox) scene.lookup("#class-list");
+            for (String title : this.currentClasses) {
+                list.getChildren().add(new Label(title));
+            }
+
             Stage dialog = new Stage();
             dialog.setTitle("Submit Schedule");
             dialog.setScene(scene);
