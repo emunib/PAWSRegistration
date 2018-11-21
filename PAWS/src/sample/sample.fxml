@@ -48,666 +48,670 @@
                     <tabs>
                       <Tab text="Courses">
                            <content>
-                              <VBox fx:id="coursesList" prefHeight="200.0" prefWidth="328.0">
-                                 <children>
-                                    <Label text="Computer Science">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <Accordion>
-                                      <panes>
-                                        <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="CMPT 140">
-                                             <content>
-                                                <ScrollPane fitToHeight="true" fitToWidth="true">
+                              <ScrollPane fitToHeight="true" fitToWidth="true">
+                                 <content>
+                                    <VBox fx:id="coursesList" prefHeight="200.0" prefWidth="328.0">
+                                       <children>
+                                          <Label text="Computer Science">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Accordion>
+                                            <panes>
+                                              <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="CMPT 140">
                                                    <content>
-                                                      <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                                         <children>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                      <ScrollPane fitToHeight="true" fitToWidth="true" minViewportHeight="140.0">
+                                                         <content>
+                                                            <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
                                                                <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="CMPT 140-01" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Looooooooooooooooong Title" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="1:00PM - 2:00PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="A very detailed description." visible="false" />
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="CMPT 140-01" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Looooooooooooooooong Title" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="1:00PM - 2:00PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="A very detailed description." visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="CMPT 140-03" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Looooooooooooooooong Title" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="TR" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="11:30AM - 1:00PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="A very detailed description." visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
                                                                </children>
-                                                            </AnchorPane>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="CMPT 140-03" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Looooooooooooooooong Title" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="TR" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="11:30AM - 1:00PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="A very detailed description." visible="false" />
-                                                               </children>
-                                                            </AnchorPane>
-                                                         </children>
-                                                         <padding>
-                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                         </padding>
-                                                      </VBox>
+                                                               <padding>
+                                                                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                               </padding>
+                                                            </VBox>
+                                                         </content>
+                                                      </ScrollPane>
                                                    </content>
-                                                </ScrollPane>
-                                             </content>
-                                        </TitledPane>
-                                      </panes>
-                                    </Accordion>
-                                    <Separator prefWidth="200.0" />
-                                    <Label text="Mathematics">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <Accordion>
-                                       <panes>
-                                          <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="Math 110">
-                                             <content>
-                                                <ScrollPane fitToHeight="true" fitToWidth="true">
+                                              </TitledPane>
+                                            </panes>
+                                          </Accordion>
+                                          <Separator prefWidth="200.0" />
+                                          <Label text="Mathematics">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Accordion>
+                                             <panes>
+                                                <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="Math 110">
                                                    <content>
-                                                      <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                                         <padding>
-                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                         </padding>
-                                                         <children>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <VBox.margin>
-                                                                  <Insets />
-                                                               </VBox.margin>
+                                                      <ScrollPane fitToHeight="true" fitToWidth="true" minViewportHeight="140.0">
+                                                         <content>
+                                                            <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                                               <padding>
+                                                                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                               </padding>
                                                                <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="MATH 140-00" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Looooooooooooooooong Title" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="TR" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="10:00AM - 11:30AM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="A very detailed description." visible="false" />
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <VBox.margin>
+                                                                        <Insets />
+                                                                     </VBox.margin>
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="MATH 140-00" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Looooooooooooooooong Title" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="TR" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="10:00AM - 11:30AM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="A very detailed description." visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
                                                                </children>
-                                                            </AnchorPane>
-                                                         </children>
-                                                      </VBox>
+                                                            </VBox>
+                                                         </content>
+                                                      </ScrollPane>
                                                    </content>
-                                                </ScrollPane>
-                                             </content>
-                                          </TitledPane>
-                                       </panes>
-                                    </Accordion>
-                                    <Separator prefWidth="200.0" />
-                                    <Label text="Classical Medieval Renaissance">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <Accordion>
-                                       <panes>
-                                          <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="CMRS 111">
-                                             <content>
-                                                <ScrollPane fitToHeight="true" fitToWidth="true">
+                                                </TitledPane>
+                                             </panes>
+                                          </Accordion>
+                                          <Separator prefWidth="200.0" />
+                                          <Label text="Classical Medieval Renaissance">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Accordion>
+                                             <panes>
+                                                <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="CMRS 111">
                                                    <content>
-                                                      <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                                         <padding>
-                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                         </padding>
-                                                         <children>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <VBox.margin>
-                                                                  <Insets />
-                                                               </VBox.margin>
+                                                      <ScrollPane fitToHeight="true" fitToWidth="true" minViewportHeight="140.0">
+                                                         <content>
+                                                            <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                                               <padding>
+                                                                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                               </padding>
                                                                <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="CMRS 111-01" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Medieval and Renaissance Civilization" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="10:30AM - 11:30AM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="An introduction to the civilization of the European Middle Ages and Renaissance through the lens of literature, philosophy, art, and other sources." visible="false" />
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <VBox.margin>
+                                                                        <Insets />
+                                                                     </VBox.margin>
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="CMRS 111-01" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Medieval and Renaissance Civilization" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="10:30AM - 11:30AM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="An introduction to the civilization of the European Middle Ages and Renaissance through the lens of literature, philosophy, art, and other sources." visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
                                                                </children>
-                                                            </AnchorPane>
-                                                         </children>
-                                                      </VBox>
+                                                            </VBox>
+                                                         </content>
+                                                      </ScrollPane>
                                                    </content>
-                                                </ScrollPane>
-                                             </content>
-                                          </TitledPane>
-                                       </panes>
-                                    </Accordion>
-                                    <Label text="Economics">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <Accordion>
-                                       <panes>
-                                          <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="ECON 111">
-                                             <content>
-                                                <ScrollPane fitToHeight="true" fitToWidth="true">
+                                                </TitledPane>
+                                             </panes>
+                                          </Accordion>
+                                          <Label text="Economics">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Accordion>
+                                             <panes>
+                                                <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="ECON 111">
                                                    <content>
-                                                      <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                                         <padding>
-                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                         </padding>
-                                                         <children>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <VBox.margin>
-                                                                  <Insets />
-                                                               </VBox.margin>
+                                                      <ScrollPane fitToHeight="true" fitToWidth="true" minViewportHeight="140.0">
+                                                         <content>
+                                                            <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                                               <padding>
+                                                                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                               </padding>
                                                                <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="ECON 111-04" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Introductory Microeconomics" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="TR" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="1:00PM - 2:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="Shows the student how to understand the individual consumption and production decisions which are made within a market economy, guided by prices and costs. Economic concepts of supply, demand, cost, response to price changes, production, equilibrium, and income distribution are analyzed." visible="false" />
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <VBox.margin>
+                                                                        <Insets />
+                                                                     </VBox.margin>
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="ECON 111-04" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Introductory Microeconomics" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="TR" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="1:00PM - 2:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="Shows the student how to understand the individual consumption and production decisions which are made within a market economy, guided by prices and costs. Economic concepts of supply, demand, cost, response to price changes, production, equilibrium, and income distribution are analyzed." visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="ECON 111-062" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Introductory Microeconomics" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="8:30AM - 9:30AM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="Shows the student how to understand the individual consumption and production decisions which are made within a market economy, guided by prices and costs. Economic concepts of supply, demand, cost, response to price changes, production, equilibrium, and income distribution are analyzed." visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
                                                                </children>
-                                                            </AnchorPane>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="ECON 111-062" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Introductory Microeconomics" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="8:30AM - 9:30AM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="Shows the student how to understand the individual consumption and production decisions which are made within a market economy, guided by prices and costs. Economic concepts of supply, demand, cost, response to price changes, production, equilibrium, and income distribution are analyzed." visible="false" />
-                                                               </children>
-                                                            </AnchorPane>
-                                                         </children>
-                                                      </VBox>
+                                                            </VBox>
+                                                         </content>
+                                                      </ScrollPane>
                                                    </content>
-                                                </ScrollPane>
-                                             </content>
-                                          </TitledPane>
-                                          <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="ECON 114">
-                                             <content>
-                                                <ScrollPane fitToHeight="true" fitToWidth="true">
+                                                </TitledPane>
+                                                <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="ECON 114">
                                                    <content>
-                                                      <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                                         <padding>
-                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                         </padding>
-                                                         <children>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <VBox.margin>
-                                                                  <Insets />
-                                                               </VBox.margin>
+                                                      <ScrollPane fitToHeight="true" fitToWidth="true" minViewportHeight="140.0">
+                                                         <content>
+                                                            <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                                               <padding>
+                                                                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                               </padding>
                                                                <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="ECON 114-02" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Introductory Macroeconomics" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="TR" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="8:30AM - 10:00AM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="Shows the student how to understand the collective problems in economic policy, and the choices which face a modern economy. Social accounting, national income, consumption, saving, government spending, taxation, investment, interest rates, money and banking, foreign trade, and balance of payments are analyzed. " visible="false" />
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <VBox.margin>
+                                                                        <Insets />
+                                                                     </VBox.margin>
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="ECON 114-02" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Introductory Macroeconomics" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="TR" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="8:30AM - 10:00AM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="Shows the student how to understand the collective problems in economic policy, and the choices which face a modern economy. Social accounting, national income, consumption, saving, government spending, taxation, investment, interest rates, money and banking, foreign trade, and balance of payments are analyzed. " visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="ECON 114-04" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Introductory Macroeconomics" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="2:30PM - 3:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="Shows the student how to understand the collective problems in economic policy, and the choices which face a modern economy. Social accounting, national income, consumption, saving, government spending, taxation, investment, interest rates, money and banking, foreign trade, and balance of payments are analyzed. " visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="ECON 114-62" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Introductory Macroeconomics" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="1:30PM - 2:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="Shows the student how to understand the collective problems in economic policy, and the choices which face a modern economy. Social accounting, national income, consumption, saving, government spending, taxation, investment, interest rates, money and banking, foreign trade, and balance of payments are analyzed. " visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
                                                                </children>
-                                                            </AnchorPane>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="ECON 114-04" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Introductory Macroeconomics" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="2:30PM - 3:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="Shows the student how to understand the collective problems in economic policy, and the choices which face a modern economy. Social accounting, national income, consumption, saving, government spending, taxation, investment, interest rates, money and banking, foreign trade, and balance of payments are analyzed. " visible="false" />
-                                                               </children>
-                                                            </AnchorPane>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="ECON 114-62" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Introductory Macroeconomics" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="1:30PM - 2:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="Shows the student how to understand the collective problems in economic policy, and the choices which face a modern economy. Social accounting, national income, consumption, saving, government spending, taxation, investment, interest rates, money and banking, foreign trade, and balance of payments are analyzed. " visible="false" />
-                                                               </children>
-                                                            </AnchorPane>
-                                                         </children>
-                                                      </VBox>
+                                                            </VBox>
+                                                         </content>
+                                                      </ScrollPane>
                                                    </content>
-                                                </ScrollPane>
-                                             </content>
-                                          </TitledPane>
-                                       </panes>
-                                    </Accordion>
-                                    <Separator prefWidth="200.0" />
-                                    <Label text="English">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <Accordion>
-                                       <panes>
-                                          <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="ENG 111">
-                                             <content>
-                                                <ScrollPane fitToHeight="true" fitToWidth="true">
+                                                </TitledPane>
+                                             </panes>
+                                          </Accordion>
+                                          <Separator prefWidth="200.0" />
+                                          <Label text="English">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Accordion>
+                                             <panes>
+                                                <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="ENG 111">
                                                    <content>
-                                                      <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                                         <padding>
-                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                         </padding>
-                                                         <children>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <VBox.margin>
-                                                                  <Insets />
-                                                               </VBox.margin>
+                                                      <ScrollPane fitToHeight="true" fitToWidth="true" minViewportHeight="140.0">
+                                                         <content>
+                                                            <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                                               <padding>
+                                                                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                               </padding>
                                                                <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="ENG 111-02" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Literature and Composition Reading Poetry" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="12:30PM - 1:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="An introduction to the major forms of poetry in English. In addition to learning the tools of critical analysis, students will study and practise composition." visible="false" />
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <VBox.margin>
+                                                                        <Insets />
+                                                                     </VBox.margin>
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="ENG 111-02" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Literature and Composition Reading Poetry" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="12:30PM - 1:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="An introduction to the major forms of poetry in English. In addition to learning the tools of critical analysis, students will study and practise composition." visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="ENG 111-04" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Literature and Composition Reading Poetry" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="TR" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="10:00AM - 11:30AM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="An introduction to the major forms of poetry in English. In addition to learning the tools of critical analysis, students will study and practise composition." visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="ENG 111-62" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Literature and Composition Reading Poetry" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="2:30PM - 3:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="An introduction to the major forms of poetry in English. In addition to learning the tools of critical analysis, students will study and practise composition." visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="ENG 111-64" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Literature and Composition Reading Poetry" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="TR" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="11:30AM - 1:00PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="An introduction to the major forms of poetry in English. In addition to learning the tools of critical analysis, students will study and practise composition." visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
                                                                </children>
-                                                            </AnchorPane>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="ENG 111-04" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Literature and Composition Reading Poetry" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="TR" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="10:00AM - 11:30AM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="An introduction to the major forms of poetry in English. In addition to learning the tools of critical analysis, students will study and practise composition." visible="false" />
-                                                               </children>
-                                                            </AnchorPane>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="ENG 111-62" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Literature and Composition Reading Poetry" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="2:30PM - 3:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="An introduction to the major forms of poetry in English. In addition to learning the tools of critical analysis, students will study and practise composition." visible="false" />
-                                                               </children>
-                                                            </AnchorPane>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="ENG 111-64" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Literature and Composition Reading Poetry" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="TR" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="11:30AM - 1:00PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="An introduction to the major forms of poetry in English. In addition to learning the tools of critical analysis, students will study and practise composition." visible="false" />
-                                                               </children>
-                                                            </AnchorPane>
-                                                         </children>
-                                                      </VBox>
+                                                            </VBox>
+                                                         </content>
+                                                      </ScrollPane>
                                                    </content>
-                                                </ScrollPane>
-                                             </content>
-                                          </TitledPane>
-                                       </panes>
-                                    </Accordion>
-                                    <Separator prefWidth="200.0" />
-                                    <Label text="Kinesiology">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <Accordion>
-                                       <panes>
-                                          <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="KIN 122">
-                                             <content>
-                                                <ScrollPane fitToHeight="true" fitToWidth="true">
+                                                </TitledPane>
+                                             </panes>
+                                          </Accordion>
+                                          <Separator prefWidth="200.0" />
+                                          <Label text="Kinesiology">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Accordion>
+                                             <panes>
+                                                <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="KIN 122">
                                                    <content>
-                                                      <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                                         <padding>
-                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                         </padding>
-                                                         <children>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <VBox.margin>
-                                                                  <Insets />
-                                                               </VBox.margin>
+                                                      <ScrollPane fitToHeight="true" fitToWidth="true" minViewportHeight="140.0">
+                                                         <content>
+                                                            <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                                               <padding>
+                                                                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                               </padding>
                                                                <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="KIN 122-02" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Social Behavioral Foundations of Physical Activity" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="9:30AM - 10:30AM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="Introduction to the basic concepts and topics associated with the behavioral aspects of physical activity. The focus is basic principles of motor learning and the social psychology of sport. A brief introduction to cultural aspects of physical activity in Canada is also presented along with current issues. " visible="false" />
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <VBox.margin>
+                                                                        <Insets />
+                                                                     </VBox.margin>
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="KIN 122-02" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Social Behavioral Foundations of Physical Activity" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="9:30AM - 10:30AM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="Introduction to the basic concepts and topics associated with the behavioral aspects of physical activity. The focus is basic principles of motor learning and the social psychology of sport. A brief introduction to cultural aspects of physical activity in Canada is also presented along with current issues. " visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="KIN 122-03" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Social Behavioral Foundations of Physical Activity" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="11:30AM - 12:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="Introduction to the basic concepts and topics associated with the behavioral aspects of physical activity. The focus is basic principles of motor learning and the social psychology of sport. A brief introduction to cultural aspects of physical activity in Canada is also presented along with current issues. " visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="KIN 122-04" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Social Behavioral Foundations of Physical Activity" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="11:30AM - 12:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="Introduction to the basic concepts and topics associated with the behavioral aspects of physical activity. The focus is basic principles of motor learning and the social psychology of sport. A brief introduction to cultural aspects of physical activity in Canada is also presented along with current issues. " visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
                                                                </children>
-                                                            </AnchorPane>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="KIN 122-03" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Social Behavioral Foundations of Physical Activity" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="11:30AM - 12:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="Introduction to the basic concepts and topics associated with the behavioral aspects of physical activity. The focus is basic principles of motor learning and the social psychology of sport. A brief introduction to cultural aspects of physical activity in Canada is also presented along with current issues. " visible="false" />
-                                                               </children>
-                                                            </AnchorPane>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="KIN 122-04" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Social Behavioral Foundations of Physical Activity" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="11:30AM - 12:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="Introduction to the basic concepts and topics associated with the behavioral aspects of physical activity. The focus is basic principles of motor learning and the social psychology of sport. A brief introduction to cultural aspects of physical activity in Canada is also presented along with current issues. " visible="false" />
-                                                               </children>
-                                                            </AnchorPane>
-                                                         </children>
-                                                      </VBox>
+                                                            </VBox>
+                                                         </content>
+                                                      </ScrollPane>
                                                    </content>
-                                                </ScrollPane>
-                                             </content>
-                                          </TitledPane>
-                                       </panes>
-                                    </Accordion>
-                                    <Separator prefWidth="200.0" />
-                                    <Label text="Linguistics">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <Accordion>
-                                       <panes>
-                                          <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="LING 111">
-                                             <content>
-                                                <ScrollPane fitToHeight="true" fitToWidth="true">
+                                                </TitledPane>
+                                             </panes>
+                                          </Accordion>
+                                          <Separator prefWidth="200.0" />
+                                          <Label text="Linguistics">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Accordion>
+                                             <panes>
+                                                <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="LING 111">
                                                    <content>
-                                                      <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                                         <padding>
-                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                         </padding>
-                                                         <children>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <VBox.margin>
-                                                                  <Insets />
-                                                               </VBox.margin>
+                                                      <ScrollPane fitToHeight="true" fitToWidth="true" minViewportHeight="140.0">
+                                                         <content>
+                                                            <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                                               <padding>
+                                                                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                               </padding>
                                                                <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="LING 111-02" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Structure of Language" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="12:30PM - 1:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="An introduction to the findings, theories and methods of modern structural linguistics. Includes phonetics, phonology, word-formation, syntax, and semantics. Basic analytical skills are emphasized. Examples will be drawn from a wide variety of natural languages. " visible="false" />
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <VBox.margin>
+                                                                        <Insets />
+                                                                     </VBox.margin>
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="LING 111-02" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Structure of Language" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="12:30PM - 1:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="An introduction to the findings, theories and methods of modern structural linguistics. Includes phonetics, phonology, word-formation, syntax, and semantics. Basic analytical skills are emphasized. Examples will be drawn from a wide variety of natural languages. " visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="LING 111-04" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Structure of Language" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="TR" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="11:30AM - 1:00PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="An introduction to the findings, theories and methods of modern structural linguistics. Includes phonetics, phonology, word-formation, syntax, and semantics. Basic analytical skills are emphasized. Examples will be drawn from a wide variety of natural languages. " visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
                                                                </children>
-                                                            </AnchorPane>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="LING 111-04" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Structure of Language" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="TR" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="11:30AM - 1:00PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="An introduction to the findings, theories and methods of modern structural linguistics. Includes phonetics, phonology, word-formation, syntax, and semantics. Basic analytical skills are emphasized. Examples will be drawn from a wide variety of natural languages. " visible="false" />
-                                                               </children>
-                                                            </AnchorPane>
-                                                         </children>
-                                                      </VBox>
+                                                            </VBox>
+                                                         </content>
+                                                      </ScrollPane>
                                                    </content>
-                                                </ScrollPane>
-                                             </content>
-                                          </TitledPane>
-                                          <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="LING 112">
-                                             <content>
-                                                <ScrollPane fitToHeight="true" fitToWidth="true">
+                                                </TitledPane>
+                                                <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="LING 112">
                                                    <content>
-                                                      <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                                         <padding>
-                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                         </padding>
-                                                         <children>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <VBox.margin>
-                                                                  <Insets />
-                                                               </VBox.margin>
+                                                      <ScrollPane fitToHeight="true" fitToWidth="true" minViewportHeight="140.0">
+                                                         <content>
+                                                            <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                                               <padding>
+                                                                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                               </padding>
                                                                <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="LING 112-02" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Dynamics of Language" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="TR" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="2:30PM - 4:00PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="An introduction to first and second language acquisition, language in society, world languages and animal communication. The human biological propensity to acquire language and language universals are considered. " visible="false" />
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <VBox.margin>
+                                                                        <Insets />
+                                                                     </VBox.margin>
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="LING 112-02" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Dynamics of Language" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="TR" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="2:30PM - 4:00PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="An introduction to first and second language acquisition, language in society, world languages and animal communication. The human biological propensity to acquire language and language universals are considered. " visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
                                                                </children>
-                                                            </AnchorPane>
-                                                         </children>
-                                                      </VBox>
+                                                            </VBox>
+                                                         </content>
+                                                      </ScrollPane>
                                                    </content>
-                                                </ScrollPane>
-                                             </content>
-                                          </TitledPane>
-                                       </panes>
-                                    </Accordion>
-                                    <Separator prefWidth="200.0" />
-                                    <Label text="Nutrition">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <Accordion>
-                                       <panes>
-                                          <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="NUTR 120">
-                                             <content>
-                                                <ScrollPane fitToHeight="true" fitToWidth="true">
+                                                </TitledPane>
+                                             </panes>
+                                          </Accordion>
+                                          <Separator prefWidth="200.0" />
+                                          <Label text="Nutrition">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Accordion>
+                                             <panes>
+                                                <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="NUTR 120">
                                                    <content>
-                                                      <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                                         <padding>
-                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                         </padding>
-                                                         <children>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <VBox.margin>
-                                                                  <Insets />
-                                                               </VBox.margin>
+                                                      <ScrollPane fitToHeight="true" fitToWidth="true" minViewportHeight="140.0">
+                                                         <content>
+                                                            <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                                               <padding>
+                                                                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                               </padding>
                                                                <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="NUTR 120-02" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Basic Nutrition" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="TR" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="8:30AM - 10:00AM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="An introduction to nutrition and health. The concepts of recommended nutrient intakes and dietary guidelines are introduced. The major nutrients and their functions in the body are outlined. Nutrition issues facing the general public are presented. " visible="false" />
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <VBox.margin>
+                                                                        <Insets />
+                                                                     </VBox.margin>
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="NUTR 120-02" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Basic Nutrition" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="TR" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="8:30AM - 10:00AM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="An introduction to nutrition and health. The concepts of recommended nutrient intakes and dietary guidelines are introduced. The major nutrients and their functions in the body are outlined. Nutrition issues facing the general public are presented. " visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
                                                                </children>
-                                                            </AnchorPane>
-                                                         </children>
-                                                      </VBox>
+                                                            </VBox>
+                                                         </content>
+                                                      </ScrollPane>
                                                    </content>
-                                                </ScrollPane>
-                                             </content>
-                                          </TitledPane>
-                                       </panes>
-                                    </Accordion>
-                                    <Separator prefWidth="200.0" />
-                                    <Label text="Philosophy">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <Accordion>
-                                       <panes>
-                                          <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="PHIL 120">
-                                             <content>
-                                                <ScrollPane fitToHeight="true" fitToWidth="true">
+                                                </TitledPane>
+                                             </panes>
+                                          </Accordion>
+                                          <Separator prefWidth="200.0" />
+                                          <Label text="Philosophy">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Accordion>
+                                             <panes>
+                                                <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="PHIL 120">
                                                    <content>
-                                                      <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                                         <padding>
-                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                         </padding>
-                                                         <children>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <VBox.margin>
-                                                                  <Insets />
-                                                               </VBox.margin>
+                                                      <ScrollPane fitToHeight="true" fitToWidth="true" minViewportHeight="140.0">
+                                                         <content>
+                                                            <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                                               <padding>
+                                                                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                               </padding>
                                                                <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="PHIL 120-02" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Knowledge Mind and Existence" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="TR" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="1:00PM - 2:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="This course explores philosophical questions regarding consciousness and personal identity, the nature of reality, knowledge and justification, the existence of God, freedom, and the nature of the self. Philosophy proceeds by the presentation and evaluation of reasons for alternative answers to fundamental questions and leads to improved critical, evaluative, and writing skills. " visible="false" />
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <VBox.margin>
+                                                                        <Insets />
+                                                                     </VBox.margin>
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="PHIL 120-02" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Knowledge Mind and Existence" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="TR" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="1:00PM - 2:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="This course explores philosophical questions regarding consciousness and personal identity, the nature of reality, knowledge and justification, the existence of God, freedom, and the nature of the self. Philosophy proceeds by the presentation and evaluation of reasons for alternative answers to fundamental questions and leads to improved critical, evaluative, and writing skills. " visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="PHIL 120-04" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Knowledge Mind and Existence" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="1:30PM - 2:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="This course explores philosophical questions regarding consciousness and personal identity, the nature of reality, knowledge and justification, the existence of God, freedom, and the nature of the self. Philosophy proceeds by the presentation and evaluation of reasons for alternative answers to fundamental questions and leads to improved critical, evaluative, and writing skills. " visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="PHIL 120-62" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Knowledge Mind and Existence" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="12:30PM - 1:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="This course explores philosophical questions regarding consciousness and personal identity, the nature of reality, knowledge and justification, the existence of God, freedom, and the nature of the self. Philosophy proceeds by the presentation and evaluation of reasons for alternative answers to fundamental questions and leads to improved critical, evaluative, and writing skills. " visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
                                                                </children>
-                                                            </AnchorPane>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="PHIL 120-04" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Knowledge Mind and Existence" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="1:30PM - 2:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="This course explores philosophical questions regarding consciousness and personal identity, the nature of reality, knowledge and justification, the existence of God, freedom, and the nature of the self. Philosophy proceeds by the presentation and evaluation of reasons for alternative answers to fundamental questions and leads to improved critical, evaluative, and writing skills. " visible="false" />
-                                                               </children>
-                                                            </AnchorPane>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="PHIL 120-62" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Knowledge Mind and Existence" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="12:30PM - 1:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="This course explores philosophical questions regarding consciousness and personal identity, the nature of reality, knowledge and justification, the existence of God, freedom, and the nature of the self. Philosophy proceeds by the presentation and evaluation of reasons for alternative answers to fundamental questions and leads to improved critical, evaluative, and writing skills. " visible="false" />
-                                                               </children>
-                                                            </AnchorPane>
-                                                         </children>
-                                                      </VBox>
+                                                            </VBox>
+                                                         </content>
+                                                      </ScrollPane>
                                                    </content>
-                                                </ScrollPane>
-                                             </content>
-                                          </TitledPane>
-                                       </panes>
-                                    </Accordion>
-                                    <Separator prefWidth="200.0" />
-                                    <Label text="Art History">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <Accordion>
-                                       <panes>
-                                          <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="ARTH 121">
-                                             <content>
-                                                <ScrollPane fitToHeight="true" fitToWidth="true">
+                                                </TitledPane>
+                                             </panes>
+                                          </Accordion>
+                                          <Separator prefWidth="200.0" />
+                                          <Label text="Art History">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Accordion>
+                                             <panes>
+                                                <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="ARTH 121">
                                                    <content>
-                                                      <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                                         <padding>
-                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                         </padding>
-                                                         <children>
-                                                            <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
-                                                               <VBox.margin>
-                                                                  <Insets />
-                                                               </VBox.margin>
+                                                      <ScrollPane fitToHeight="true" fitToWidth="true" minViewportHeight="140.0">
+                                                         <content>
+                                                            <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                                               <padding>
+                                                                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                               </padding>
                                                                <children>
-                                                                  <Label id="title" layoutX="14.0" layoutY="14.0" text="ARTH 121-02" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Art and Visual Culture II" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
-                                                                  <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
-                                                                  <Label id="time" layoutX="413.0" layoutY="32.0" text="12:30PM - 1:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
-                                                                  <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
-                                                                  <Label id="description" layoutX="14.0" layoutY="23.0" text="This introductory class explores the production, dissemination and consumption of art, architecture and visual culture from the 1700s to the present day. In a series of case studies drawn from differing cultures and geographies both local and global, it will consider a range of questions including: What is the role of the artist, architect and visual culture in society? What are the media, genres and contexts for communicating thought, and how and when do they engage in cultural, social and political action (if they do)? What does it take for art and visual culture to open up a space for relating to the world we live in, differently? How does the study of art, architecture and visual culture (past and present) generate curiosity, expand understandings, and ask new questions, in the present moment? This class will engage with these and other demanding questions. " visible="false" />
+                                                                  <AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" onMouseClicked="#selectSection" styleClass="button">
+                                                                     <VBox.margin>
+                                                                        <Insets />
+                                                                     </VBox.margin>
+                                                                     <children>
+                                                                        <Label id="title" layoutX="14.0" layoutY="14.0" text="ARTH 121-02" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label id="long-title" layoutX="20.3" layoutY="30.0" prefHeight="20.0" prefWidth="326.0" text="Art and Visual Culture II" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+                                                                        <Label id="days" layoutX="403.0" layoutY="22.0" text="MWF" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="6.0" />
+                                                                        <Label id="time" layoutX="413.0" layoutY="32.0" text="12:30PM - 1:30PM" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="60.0" />
+                                                                        <Button layoutX="477.0" layoutY="18.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToSchedule" prefWidth="50.0" text="+" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                                        <Label id="description" layoutX="14.0" layoutY="23.0" text="This introductory class explores the production, dissemination and consumption of art, architecture and visual culture from the 1700s to the present day. In a series of case studies drawn from differing cultures and geographies both local and global, it will consider a range of questions including: What is the role of the artist, architect and visual culture in society? What are the media, genres and contexts for communicating thought, and how and when do they engage in cultural, social and political action (if they do)? What does it take for art and visual culture to open up a space for relating to the world we live in, differently? How does the study of art, architecture and visual culture (past and present) generate curiosity, expand understandings, and ask new questions, in the present moment? This class will engage with these and other demanding questions. " visible="false" />
+                                                                     </children>
+                                                                  </AnchorPane>
                                                                </children>
-                                                            </AnchorPane>
-                                                         </children>
-                                                      </VBox>
+                                                            </VBox>
+                                                         </content>
+                                                      </ScrollPane>
                                                    </content>
-                                                </ScrollPane>
-                                             </content>
-                                          </TitledPane>
-                                       </panes>
-                                    </Accordion>
-                                    <Separator prefWidth="200.0" />
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </padding>
-                              </VBox>
+                                                </TitledPane>
+                                             </panes>
+                                          </Accordion>
+                                          <Separator prefWidth="200.0" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
                            </content>
                         </Tab>
                         <Tab text="Filters">
                            <content>
-                              <VBox fx:id="coursesList1" prefHeight="200.0" prefWidth="100.0">
+                              <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
                                     <Label text="Subject">
                                        <font>
