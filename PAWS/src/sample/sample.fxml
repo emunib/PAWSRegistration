@@ -1143,8 +1143,7 @@
                                     <Font name="System Bold" size="13.0" />
                                  </font>
                               </Label>
-                              <ComboBox layoutX="310.0" layoutY="9.0" prefWidth="150.0" promptText="Term" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="0.0" />
-                              <ComboBox fx:id="term" layoutX="310.0" layoutY="9.0" prefWidth="150.0" promptText="Term" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="0.0" />
+                              <ComboBox fx:id="term" layoutX="310.0" layoutY="9.0" prefWidth="150.0" promptText="Term" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="0.0" />
                               <Button layoutX="329.0" layoutY="8.0" mnemonicParsing="false" onAction="#submitSchedule" styleClass="primary" text="Submit" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0" />
                               <Button layoutX="326.0" layoutY="10.0" mnemonicParsing="false" text="Help" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="0.0" />
                            </children>
