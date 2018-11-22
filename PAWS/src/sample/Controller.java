@@ -143,6 +143,34 @@ public class Controller {
     private boolean doesNotConflict(String title, String days, String time) {
         if (currentClasses.isEmpty()) return true;
 
+        for (String str : this.currentClasses) {
+            if (str.startsWith(title.split("-")[0])) {
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("conflict.fxml"));
+                    Scene scene = new Scene(fxmlLoader.load());
+                    SecondaryController c = (SecondaryController) fxmlLoader.getController();
+                    c.schedule = this.schedule;
+                    c.currentClasses = this.currentClasses;
+                    Label prompt = (Label) scene.lookup("#message");
+                    ((Label) scene.lookup("#title")).setText(str);
+                    prompt.setText(title + " conflicts with the existing class " + str + ". Do you wish to replace " + str + "?");
+
+                    Stage dialog = new Stage();
+                    dialog.setTitle("Class Conflict");
+                    dialog.setScene(scene);
+                    dialog.initModality(Modality.APPLICATION_MODAL);
+                    dialog.showAndWait();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                if (this.currentClasses.contains(str)) {
+                    return false;
+                }
+            }
+        }
+
         for (Node node : schedule.lookupAll("#title")) {
             String otherTitle = ((Label) node).getText();
             String otherDays = ((Label) node.getParent().lookup("#days")).getText();
