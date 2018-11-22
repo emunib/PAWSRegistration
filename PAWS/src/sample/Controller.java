@@ -24,6 +24,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.*;
 
 public class Controller {
@@ -58,7 +61,7 @@ public class Controller {
     private Label time;
 
     @FXML
-    private GridPane schedule;
+    public GridPane schedule;
 
     @FXML
     private URL location;
@@ -71,38 +74,34 @@ public class Controller {
 
         this.timeLookup = new HashMap<>();
         String[] times = new String[]{"8:00AM", "8:30AM", "9:00AM", "9:30AM", "10:00AM", "10:30AM", "11:00AM", "11:30AM",
-                                      "12:00PM", "12:30PM", "1:00PM", "1:30PM", "2:00PM", "2:30PM", "3:00PM", "3:30PM", "4:00AM"};
+                "12:00PM", "12:30PM", "1:00PM", "1:30PM", "2:00PM", "2:30PM", "3:00PM", "3:30PM", "4:00AM"};
 
         for (int i = 0; i < times.length; i++) {
-            timeLookup.put(times[i], i+1);
+            timeLookup.put(times[i], i + 1);
         }
-
-
-
     }
 
     @FXML
     private void initialize() {
+        try {
+            this.term.getItems().add("Winter 2019 Term");
 
-        this.term.getItems().add("Winter 2019 Term");
+            String[] subjectList = new String[]{"Art History", "Classical Medieval Renaissance", "Computer Science",
+                    "Economics", "English", "Kinesiology", "Linguistics", "Mathematics", "Nutrition", "Philosophy"};
 
-        String[] subjectList = new String[] { "Art History", "Classical Medieval Renaissance", "Computer Science",
-                "Economics", "English", "Kinesiology", "Linguistics", "Mathematics", "Nutrition", "Philosophy"};
+            this.subjects.getItems().addAll(subjectList);
 
-        this.subjects.getItems().addAll(subjectList);
+            String[] campusList = new String[]{"All", "U of S -Saskatoon Main Campus", "Carlton Trail Regional College",
+                    "Cumberland Regional College", "Cypress Hills Regional College", "First Nations Univ of Canada",
+                    "Great Plains College", "La Ronge", "Lakeland College"};
 
-        String[] campusList = new String[] { "All", "U of S -Saskatoon Main Campus", "Carlton Trail Regional College",
-                "Cumberland Regional College", "Cypress Hills Regional College", "First Nations Univ of Canada",
-                "Great Plains College", "La Ronge", "Lakeland College" };
+            this.campus.getItems().addAll(campusList);
 
-        this.campus.getItems().addAll(campusList);
+            String[] levelList = new String[]{"100", "200", "300", "400"};
 
-        String[] levelList = new String[] { "100", "200", "300", "400"};
-
-        this.level.getItems().addAll(levelList);
-
-
-
+            this.level.getItems().addAll(levelList);
+        } catch (NullPointerException ignored) {
+        }
     }
 
     @FXML
@@ -141,12 +140,66 @@ public class Controller {
         this.time.setText(((Label) card.lookup("#time")).getText());
     }
 
+    private boolean doesNotConflict(String title, String days, String time) {
+        if (currentClasses.isEmpty()) return true;
+
+        for (Node node : schedule.lookupAll("#title")) {
+            String otherTitle = ((Label) node).getText();
+            String otherDays = ((Label) node.getParent().lookup("#days")).getText();
+            String otherTime = ((Label) node.getParent().lookup("#time")).getText();
+
+            if (!this.currentClasses.contains(otherTitle)) {
+                continue;
+            }
+
+            if (!days.equals(otherDays)) {
+                continue;
+            }
+
+            try {
+                Instant from = new SimpleDateFormat("hh:mma").parse(time.split(" - ")[0]).toInstant();
+                Instant to = new SimpleDateFormat("hh:mma").parse(time.split(" - ")[1]).toInstant().minusSeconds(600);
+                Instant otherFrom = new SimpleDateFormat("hh:mma").parse(otherTime.split(" - ")[0]).toInstant();
+                Instant otherTo = new SimpleDateFormat("hh:mma").parse(otherTime.split(" - ")[1]).toInstant().minusSeconds(600);
+
+                if ((!otherFrom.isBefore(from) && !otherFrom.isAfter(to) || (!otherTo.isBefore(from) && !otherTo.isAfter(to)))) {
+                    try {
+                        FXMLLoader fxmlLoader = new FXMLLoader();
+                        fxmlLoader.setLocation(getClass().getResource("conflict.fxml"));
+                        Scene scene = new Scene(fxmlLoader.load());
+                        SecondaryController c = (SecondaryController) fxmlLoader.getController();
+                        c.schedule = this.schedule;
+                        c.currentClasses = this.currentClasses;
+                        Label prompt = (Label) scene.lookup("#message");
+                        ((Label) scene.lookup("#title")).setText(otherTitle);
+                        prompt.setText(title + " conflicts with the existing class " + otherTitle + ". Do you wish to replace " + otherTitle + "?");
+
+                        Stage dialog = new Stage();
+                        dialog.setTitle("Class Conflict");
+                        dialog.setScene(scene);
+                        dialog.initModality(Modality.APPLICATION_MODAL);
+                        dialog.showAndWait();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    if (this.currentClasses.contains(otherTitle)) {
+                        return false;
+                    }
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        return true;
+    }
+
     @FXML
     private void addToSchedule(ActionEvent event) {
         AnchorPane card = (AnchorPane) ((Button) event.getSource()).getParent();
         String title = ((Label) card.lookup("#title")).getText();
 
-        if (!this.currentClasses.contains(title)) {
+        if (!this.currentClasses.contains(title) && this.doesNotConflict(title, ((Label) card.lookup("#days")).getText(), ((Label) card.lookup("#time")).getText())) {
             this.currentClasses.add(title);
 
             String fullTitle = ((Label) card.lookup("#long-title")).getText();
@@ -189,6 +242,7 @@ public class Controller {
                 Button cross = new Button("X");
                 cross.setOnAction(this::removeFromSchedule);
                 cross.getStyleClass().add("sm");
+                cross.setId("drop");
                 GridPane.setHalignment(cross, HPos.RIGHT);
                 pane.add(cross, 0, 0);
 
@@ -196,20 +250,15 @@ public class Controller {
 
                 if (c == 'M') {
                     schedule.add(pane, 1, this.timeLookup.get(timeKey), 1, 2);
-                }
-                else if (c == 'T') {
+                } else if (c == 'T') {
                     schedule.add(pane, 2, this.timeLookup.get(timeKey), 1, 3);
-                }
-                else if (c == 'W') {
+                } else if (c == 'W') {
                     schedule.add(pane, 3, this.timeLookup.get(timeKey), 1, 2);
-                }
-                else if (c == 'R') {
+                } else if (c == 'R') {
                     schedule.add(pane, 4, this.timeLookup.get(timeKey), 1, 3);
-                }
-                else if (c == 'F') {
+                } else if (c == 'F') {
                     schedule.add(pane, 5, this.timeLookup.get(timeKey), 1, 2);
                 }
-
             }
         }
     }
@@ -219,7 +268,11 @@ public class Controller {
         Pane card = (Pane) ((Button) event.getSource()).getParent();
 
         String title = ((Label) card.lookup("#title")).getText();
+        this.removeClass(title);
+    }
 
+    private void removeClass(String title) {
+        System.out.println(schedule);
         for (Node node : schedule.lookupAll("#title")) {
             if (((Label) node).getText().equals(title)) {
                 schedule.getChildren().remove(node.getParent());
