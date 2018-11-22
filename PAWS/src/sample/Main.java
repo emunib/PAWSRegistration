@@ -13,6 +13,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("PAWS Registration");
         primaryStage.setScene(new Scene(root, 1080, 720));
+        primaryStage.setMaximized(true);
         primaryStage.show();
     }
 

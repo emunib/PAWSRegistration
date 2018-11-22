@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
+import javafx.geometry.HPos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -146,7 +147,9 @@ public class Controller {
 
                 Button cross = new Button("X");
                 cross.setOnAction(this::removeFromSchedule);
-                pane.add(cross, 1, 0);
+                cross.getStyleClass().add("sm");
+                GridPane.setHalignment(cross, HPos.RIGHT);
+                pane.add(cross, 0, 0);
 
                 String timeKey = time.split(" ")[0];
 
@@ -182,9 +185,6 @@ public class Controller {
             }
         }
 
-
-        System.out.println();
         currentClasses.remove(title);
-
     }
 }
