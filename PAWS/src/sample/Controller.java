@@ -6,9 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -117,6 +115,7 @@ public class Controller {
             for (char c : days.toCharArray()) {
                 GridPane pane = new GridPane();
                 pane.getStyleClass().add("button");
+                pane.setId(title);
                 pane.setOnMouseClicked(this::selectSection);
 
                 Label label;
@@ -145,6 +144,10 @@ public class Controller {
                 label.setId("title");
                 pane.add(label, 0, 0);
 
+                Button cross = new Button("X");
+                cross.setOnAction(this::removeFromSchedule);
+                pane.add(cross, 1, 0);
+
                 String timeKey = time.split(" ")[0];
 
                 if (c == 'M') {
@@ -162,7 +165,26 @@ public class Controller {
                 else if (c == 'F') {
                     schedule.add(pane, 5, this.timeLookup.get(timeKey), 1, 2);
                 }
+
             }
         }
+    }
+
+    @FXML
+    private void removeFromSchedule(ActionEvent event) {
+        Pane card = (Pane) ((Button) event.getSource()).getParent();
+
+        String title = ((Label) card.lookup("#title")).getText();
+
+        for (Node node : schedule.lookupAll("#title")) {
+            if (((Label) node).getText().equals(title)) {
+                schedule.getChildren().remove(node.getParent());
+            }
+        }
+
+
+        System.out.println();
+        currentClasses.remove(title);
+
     }
 }
