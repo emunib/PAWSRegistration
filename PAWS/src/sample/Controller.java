@@ -140,6 +140,14 @@ public class Controller {
         this.time.setText(((Label) card.lookup("#time")).getText());
     }
 
+    private void selectSection(AnchorPane card) {
+        this.title.setText(((Label) card.lookup("#title")).getText());
+        this.fullTitle.setText(((Label) card.lookup("#long-title")).getText());
+        this.description.setText(((Label) card.lookup("#description")).getText());
+        this.days.setText(((Label) card.lookup("#days")).getText());
+        this.time.setText(((Label) card.lookup("#time")).getText());
+    }
+
     private boolean doesNotConflict(String title, String days, String time) {
         if (currentClasses.isEmpty()) return true;
 
@@ -225,6 +233,7 @@ public class Controller {
     @FXML
     private void addToSchedule(ActionEvent event) {
         AnchorPane card = (AnchorPane) ((Button) event.getSource()).getParent();
+        selectSection(card);
         String title = ((Label) card.lookup("#title")).getText();
 
         if (!this.currentClasses.contains(title) && this.doesNotConflict(title, ((Label) card.lookup("#days")).getText(), ((Label) card.lookup("#time")).getText())) {
@@ -300,7 +309,6 @@ public class Controller {
     }
 
     private void removeClass(String title) {
-        System.out.println(schedule);
         for (Node node : schedule.lookupAll("#title")) {
             if (((Label) node).getText().equals(title)) {
                 schedule.getChildren().remove(node.getParent());
