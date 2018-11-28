@@ -1,77 +1,76 @@
 package sample;
 
-import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Bounds;
-import javafx.geometry.HPos;
 import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import org.controlsfx.control.CheckComboBox;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.*;
 
 public class Controller {
-    private HashMap<String, Integer> timeLookup;
-    private HashSet<String> currentClasses;
-
-    @FXML
-    private ComboBox<String> term;
-
-    @FXML
-    private ComboBox<String> subjects;
-
-    @FXML
-    private ComboBox<String> campus;
-
-    @FXML
-    private ComboBox<String> level;
-
-    @FXML
-    private Label title;
-
-    @FXML
-    private Label fullTitle;
-
-    @FXML
-    private Label description;
-
-    @FXML
-    private Label days;
-
-    @FXML
-    private Label time;
-
-    @FXML
-    public GridPane schedule;
-
     @FXML
     private URL location;
 
     @FXML
     private ResourceBundle resources;
 
-    public Controller() {
-        this.currentClasses = new HashSet<>();
+    private HashMap<String, Integer> timeLookup;
 
+    private HashMap<String, ClassItem> classes;
+    private SortedSet<String> subjects;
+    private SortedSet<String> campuses;
+    private SortedSet<String> levels;
+
+    private SortedSet<String> confirmedSchedule;
+    private SortedMap<String, ArrayList<Node>> currentSchedule;
+
+    @FXML
+    private GridPane root;
+
+    @FXML
+    private TextField searchField;
+
+    @FXML
+    private ComboBox<String> termsDropDown;
+
+    @FXML
+    private CheckComboBox<String> subjectsDropDown;
+
+    @FXML
+    private CheckComboBox<String> campusesDropDown;
+
+    @FXML
+    private CheckComboBox<String> levelsDropDown;
+
+    @FXML
+    private VBox coursesPane;
+
+    @FXML
+    private AnchorPane detailsPane;
+
+    @FXML
+    private Label detailIdLabel;
+
+    @FXML
+    private GridPane schedulePane;
+
+    public Controller() {
         this.timeLookup = new HashMap<>();
         String[] times = new String[]{"8:00AM", "8:30AM", "9:00AM", "9:30AM", "10:00AM", "10:30AM", "11:00AM", "11:30AM",
                 "12:00PM", "12:30PM", "1:00PM", "1:30PM", "2:00PM", "2:30PM", "3:00PM", "3:30PM", "4:00AM"};
@@ -79,242 +78,331 @@ public class Controller {
         for (int i = 0; i < times.length; i++) {
             timeLookup.put(times[i], i + 1);
         }
+
+        this.classes = new HashMap<>();
+        this.subjects = new TreeSet<>();
+        this.campuses = new TreeSet<>();
+        this.levels = new TreeSet<>();
+
+        try {
+            Scanner scanner = new Scanner(new File("src/sample/course_data.txt"));
+            while (scanner.hasNextLine()) {
+                String[] data = scanner.nextLine().split("\t");
+                assert data.length == 8;
+
+                this.classes.put(data[0], new ClassItem(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]));
+                this.subjects.add(data[1]);
+                this.campuses.add(data[6]);
+                this.levels.add(data[7]);
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        this.confirmedSchedule = new TreeSet<>();
+        this.currentSchedule = new TreeMap<>();
     }
 
     @FXML
     private void initialize() {
-        try {
-            this.term.getItems().add("Winter 2019 Term");
+        this.termsDropDown.getItems().add("Winter 2019 Term");
+        this.termsDropDown.setValue("Winter 2019 Term");
 
-            String[] subjectList = new String[]{"Art History", "Classical Medieval Renaissance", "Computer Science",
-                    "Economics", "English", "Kinesiology", "Linguistics", "Mathematics", "Nutrition", "Philosophy"};
+        this.subjectsDropDown.getItems().clear();
+        this.subjectsDropDown.getItems().addAll(this.subjects);
+        this.subjectsDropDown.getCheckModel().getCheckedItems().addListener((ListChangeListener<String>) c -> this.updateClasses());
 
-            this.subjects.getItems().addAll(subjectList);
+        this.campusesDropDown.getItems().clear();
+        this.campusesDropDown.getItems().addAll(this.campuses);
+        this.campusesDropDown.getCheckModel().getCheckedItems().addListener((ListChangeListener<String>) c -> this.updateClasses());
 
-            String[] campusList = new String[]{"All", "U of S -Saskatoon Main Campus", "Carlton Trail Regional College",
-                    "Cumberland Regional College", "Cypress Hills Regional College", "First Nations Univ of Canada",
-                    "Great Plains College", "La Ronge", "Lakeland College"};
+        this.levelsDropDown.getItems().clear();
+        this.levelsDropDown.getItems().addAll(this.levels);
+        this.levelsDropDown.getCheckModel().getCheckedItems().addListener((ListChangeListener<String>) c -> this.updateClasses());
 
-            this.campus.getItems().addAll(campusList);
-
-            String[] levelList = new String[]{"100", "200", "300", "400"};
-
-            this.level.getItems().addAll(levelList);
-        } catch (NullPointerException ignored) {
-        }
+        this.updateClasses();
     }
 
     @FXML
-    private void closeWindow(ActionEvent event) {
-        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        stage.close();
-    }
+    private void updateClasses() {
+        this.coursesPane.getChildren().clear();
 
-    @FXML
-    private void submitSchedule() {
-        try {
-            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("submit.fxml")));
-            VBox list = (VBox) scene.lookup("#class-list");
-            for (String title : this.currentClasses) {
-                list.getChildren().add(new Label(title));
+        SortedSet<String> filteredClasses = this.filterClasses();
+        if (filteredClasses.isEmpty()) {
+            this.coursesPane.getChildren().add(new Label("No classes matched you search."));
+        } else {
+            SortedMap<String, ArrayList<String>> filteredSubjects = new TreeMap<>();
+
+            for (String id : filteredClasses) {
+                String subject = this.classes.get(id).getSubject();
+                if (!filteredSubjects.containsKey(subject)) {
+                    filteredSubjects.put(subject, new ArrayList<>());
+                }
+                filteredSubjects.get(subject).add(id);
             }
 
-            Stage dialog = new Stage();
-            dialog.setTitle("Submit Schedule");
-            dialog.setScene(scene);
-            dialog.initModality(Modality.APPLICATION_MODAL);
-            dialog.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
+            for (String subject : filteredSubjects.keySet()) {
+                Label subjectHeading = new Label(subject);
+                subjectHeading.setFont(Font.font("System", FontWeight.BOLD, 12));
+
+                Accordion subjectAccd = new Accordion();
+
+                SortedMap<String, ArrayList<String>> filteredCourses = new TreeMap<>();
+
+                for (String id : filteredSubjects.get(subject)) {
+                    String course = id.split("-")[0];
+                    if (!filteredCourses.containsKey(course)) {
+                        filteredCourses.put(course, new ArrayList<>());
+                    }
+                    filteredCourses.get(course).add(id);
+                }
+
+                for (String course : filteredCourses.keySet()) {
+                    TitledPane coursePane = null;
+                    try {
+                        coursePane = new FXMLLoader(getClass().getResource("coursePane.fxml")).load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    if (coursePane != null) {
+                        coursePane.setText(course);
+                        VBox classList = (VBox) ((ScrollPane) coursePane.getContent()).getContent();
+                        for (String id : filteredClasses) {
+                            ClassItem classItem = this.classes.get(id);
+
+                            if (classItem.getSubject().equals(subject) && classItem.getId().split("-")[0].equals(course)) {
+
+                                AnchorPane card = null;
+                                try {
+                                    card = new FXMLLoader(getClass().getResource("classCard.fxml")).load();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+
+                                if (card != null) {
+                                    ((Label) card.lookup("#class-id")).setText(classItem.getId());
+                                    ((Label) card.lookup("#class-title")).setText(classItem.getTitle());
+                                    ((Label) card.lookup("#class-days")).setText(classItem.getDays());
+                                    ((Label) card.lookup("#class-time")).setText(classItem.getTime());
+
+                                    ((Button) card.lookup("#add-class-button")).setOnAction(event -> addToSchedule((AnchorPane) ((Button) event.getSource()).getParent()));
+                                    card.setOnMouseClicked(event -> showDetails(((AnchorPane) event.getSource())));
+
+                                    classList.getChildren().add(card);
+                                }
+                            }
+                        }
+                    }
+
+                    subjectAccd.getPanes().add(coursePane);
+                }
+
+                this.coursesPane.getChildren().addAll(subjectHeading, subjectAccd, new Separator());
+            }
         }
     }
 
-    @FXML
-    private void selectSection(MouseEvent event) {
-        Pane card = (Pane) event.getSource();
+    private SortedSet<String> filterClasses() {
+        SortedSet<String> classes = new TreeSet<>(this.classes.keySet());
 
-        this.title.setText(((Label) card.lookup("#title")).getText());
-        this.fullTitle.setText(((Label) card.lookup("#long-title")).getText());
-        this.description.setText(((Label) card.lookup("#description")).getText());
-        this.days.setText(((Label) card.lookup("#days")).getText());
-        this.time.setText(((Label) card.lookup("#time")).getText());
+        if (this.searchField.getCharacters().length() == 0) {
+            ObservableList<Integer> checkedSubjectIndices = this.subjectsDropDown.getCheckModel().getCheckedIndices();
+            classes.removeIf(c -> !checkedSubjectIndices.contains(this.subjectsDropDown.getItems().indexOf(this.classes.get(c).getSubject())));
+
+            ObservableList<Integer> checkedCampusIndices = this.campusesDropDown.getCheckModel().getCheckedIndices();
+            classes.removeIf(c -> !checkedCampusIndices.contains(this.campusesDropDown.getItems().indexOf(this.classes.get(c).getCampus())));
+
+            ObservableList<Integer> checkedLevelIndices = this.levelsDropDown.getCheckModel().getCheckedIndices();
+            classes.removeIf(c -> !checkedLevelIndices.contains(this.levelsDropDown.getItems().indexOf(this.classes.get(c).getLevel())));
+        } else {
+            classes.removeIf(c -> !this.classes.get(c).getTitle().toLowerCase().contains(this.searchField.getCharacters().toString().toLowerCase()));
+        }
+
+        return classes;
     }
 
-    private void selectSection(AnchorPane card) {
-        this.title.setText(((Label) card.lookup("#title")).getText());
-        this.fullTitle.setText(((Label) card.lookup("#long-title")).getText());
-        this.description.setText(((Label) card.lookup("#description")).getText());
-        this.days.setText(((Label) card.lookup("#days")).getText());
-        this.time.setText(((Label) card.lookup("#time")).getText());
+    private void showDetails(Pane card) {
+        ClassItem classItem = this.classes.get(((Label) card.lookup("#class-id")).getText());
+
+        ((Label) this.detailsPane.lookup("#class-id")).setText(classItem.getId());
+        ((Label) this.detailsPane.lookup("#class-title")).setText(classItem.getTitle());
+        ((Label) this.detailsPane.lookup("#class-time")).setText(classItem.getTime());
+        ((Label) this.detailsPane.lookup("#class-days")).setText(classItem.getDays());
+        ((Label) this.detailsPane.lookup("#class-description")).setText(classItem.getDescription());
+        // subject, location, prof, campus, etc.
     }
 
-    private boolean doesNotConflict(String title, String days, String time) {
-        if (currentClasses.isEmpty()) return true;
+    private boolean canAddClass(ClassItem classItem) {
+        if (this.currentSchedule.containsKey(classItem.getId())) return false;
+        if (this.currentSchedule.keySet().size() >= 5) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "You cannot register for more than 5 courses per term.", ButtonType.OK);
 
-        for (String str : this.currentClasses) {
-            if (str.startsWith(title.split("-")[0])) {
-                try {
-                    FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("conflict.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load());
-                    SecondaryController c = (SecondaryController) fxmlLoader.getController();
-                    c.schedule = this.schedule;
-                    c.currentClasses = this.currentClasses;
-                    Label prompt = (Label) scene.lookup("#message");
-                    ((Label) scene.lookup("#title")).setText(str);
-                    prompt.setText(title + " conflicts with the existing class " + str + ". Do you wish to replace " + str + "?");
+            DialogPane dialogPane = alert.getDialogPane();
+            dialogPane.lookupButton(ButtonType.OK).getStyleClass().add("primary");
+            dialogPane.getStylesheets().add(getClass().getResource("bootstrap3.css").toExternalForm());
 
-                    Stage dialog = new Stage();
-                    dialog.setTitle("Class Conflict");
-                    dialog.setScene(scene);
-                    dialog.initModality(Modality.APPLICATION_MODAL);
-                    dialog.showAndWait();
-                } catch (IOException e) {
-                    e.printStackTrace();
+            this.root.setDisable(true);
+            alert.showAndWait();
+            this.root.setDisable(false);
+
+            return false;
+        }
+
+        for (String otherClassId : this.currentSchedule.keySet()) {
+            String course = classItem.getId().split("-")[0];
+            String otherCourse = otherClassId.split("-")[0];
+            if (course.equals(otherCourse)) {
+                boolean replace = this.showConformationDialog("You are already registered for " + otherClassId + ". Would you like to replace " + otherClassId + " with " + classItem.getId() + " ?");
+
+                if (replace) {
+                    this.removeFromSchedule(this.classes.get(otherClassId));
+                    return this.canAddClass(classItem);
                 }
 
-                if (this.currentClasses.contains(str)) {
+                return false;
+            }
+        }
+
+        for (String classId : this.currentSchedule.keySet()) {
+            ClassItem otherClass = this.classes.get(classId);
+
+            if (classItem.getDays().equals(otherClass.getDays())) {
+
+                try {
+                    Date from = new SimpleDateFormat("hh:mma").parse(classItem.getTime().split(" - ")[0]);
+                    Date to = new SimpleDateFormat("hh:mma").parse(classItem.getTime().split(" - ")[1]);
+                    Date otherFrom = new SimpleDateFormat("hh:mma").parse(otherClass.getTime().split(" - ")[0]);
+                    Date otherTo = new SimpleDateFormat("hh:mma").parse(otherClass.getTime().split(" - ")[1]);
+
+                    if ((!otherFrom.before(from) && !otherFrom.after(to) || (!otherTo.before(from) && !otherTo.after(to)))) {
+                        boolean replace = this.showConformationDialog(classItem.getId() + " conflicts with " + otherClass.getId() + ". Would you like to replace " + otherClass.getId() + " with " + classItem.getId() + " ?");
+
+                        if (replace) {
+                            this.removeFromSchedule(otherClass);
+                            return this.canAddClass(classItem);
+                        }
+
+                        return false;
+                    }
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
                     return false;
                 }
             }
         }
 
-        for (Node node : schedule.lookupAll("#title")) {
-            String otherTitle = ((Label) node).getText();
-            String otherDays = ((Label) node.getParent().lookup("#days")).getText();
-            String otherTime = ((Label) node.getParent().lookup("#time")).getText();
-
-            if (!this.currentClasses.contains(otherTitle)) {
-                continue;
-            }
-
-            if (!days.equals(otherDays)) {
-                continue;
-            }
-
-            try {
-                Instant from = new SimpleDateFormat("hh:mma").parse(time.split(" - ")[0]).toInstant();
-                Instant to = new SimpleDateFormat("hh:mma").parse(time.split(" - ")[1]).toInstant().minusSeconds(600);
-                Instant otherFrom = new SimpleDateFormat("hh:mma").parse(otherTime.split(" - ")[0]).toInstant();
-                Instant otherTo = new SimpleDateFormat("hh:mma").parse(otherTime.split(" - ")[1]).toInstant().minusSeconds(600);
-
-                if ((!otherFrom.isBefore(from) && !otherFrom.isAfter(to) || (!otherTo.isBefore(from) && !otherTo.isAfter(to)))) {
-                    try {
-                        FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("conflict.fxml"));
-                        Scene scene = new Scene(fxmlLoader.load());
-                        SecondaryController c = (SecondaryController) fxmlLoader.getController();
-                        c.schedule = this.schedule;
-                        c.currentClasses = this.currentClasses;
-                        Label prompt = (Label) scene.lookup("#message");
-                        ((Label) scene.lookup("#title")).setText(otherTitle);
-                        prompt.setText(title + " conflicts with the existing class " + otherTitle + ". Do you wish to replace " + otherTitle + "?");
-
-                        Stage dialog = new Stage();
-                        dialog.setTitle("Class Conflict");
-                        dialog.setScene(scene);
-                        dialog.initModality(Modality.APPLICATION_MODAL);
-                        dialog.showAndWait();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    if (this.currentClasses.contains(otherTitle)) {
-                        return false;
-                    }
-                }
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
         return true;
     }
 
-    @FXML
-    private void addToSchedule(ActionEvent event) {
-        AnchorPane card = (AnchorPane) ((Button) event.getSource()).getParent();
-        selectSection(card);
-        String title = ((Label) card.lookup("#title")).getText();
+    private void addToSchedule(Pane card) {
+        this.showDetails(card);
+        ClassItem classItem = this.classes.get(((Label) card.lookup("#class-id")).getText());
 
-        if (!this.currentClasses.contains(title) && this.doesNotConflict(title, ((Label) card.lookup("#days")).getText(), ((Label) card.lookup("#time")).getText())) {
-            this.currentClasses.add(title);
+        this.addToSchedule(classItem);
+    }
 
-            String fullTitle = ((Label) card.lookup("#long-title")).getText();
-            String description = ((Label) card.lookup("#description")).getText();
-            String days = ((Label) card.lookup("#days")).getText();
-            String time = ((Label) card.lookup("#time")).getText();
+    private void addToSchedule(ClassItem classItem) {
+        if (this.canAddClass(classItem)) {
+            this.currentSchedule.put(classItem.getId(), new ArrayList<>(3));
+            String timeKey = classItem.getTime().split(" ")[0];
 
-            for (char c : days.toCharArray()) {
-                GridPane pane = new GridPane();
-                pane.getStyleClass().add("button");
-                pane.setId(title);
-                pane.setOnMouseClicked(this::selectSection);
-
-                Label label;
-
-                label = new Label(fullTitle);
-                label.setId("long-title");
-                pane.add(label, 0, 0);
-
-                label = new Label(description);
-                label.setId("description");
-                pane.add(label, 0, 0);
-
-                label = new Label(days);
-                label.setId("days");
-                pane.add(label, 0, 0);
-
-                label = new Label(time);
-                label.setId("time");
-                pane.add(label, 0, 0);
-
-                for (Node node : pane.getChildren()) {
-                    node.setVisible(false);
+            for (char c : classItem.getDays().toCharArray()) {
+                AnchorPane scheduleCard = null;
+                try {
+                    scheduleCard = new FXMLLoader(getClass().getResource("scheduleCard.fxml")).load();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
+                if (scheduleCard != null) {
+                    ((Label) scheduleCard.lookup("#class-id")).setText(classItem.getId());
+                    scheduleCard.setOnMouseClicked(event -> showDetails((AnchorPane) event.getSource()));
+                    ((Button) scheduleCard.lookup("#drop-class-button")).setOnAction(event -> removeFromSchedule((AnchorPane) ((Button) event.getSource()).getParent().getParent()));
 
-                label = new Label(title);
-                label.setId("title");
-                pane.add(label, 0, 0);
+                    if (c == 'M') {
+                        this.schedulePane.add(scheduleCard, 1, this.timeLookup.get(timeKey), 1, 2);
+                    } else if (c == 'T') {
+                        this.schedulePane.add(scheduleCard, 2, this.timeLookup.get(timeKey), 1, 3);
+                    } else if (c == 'W') {
+                        this.schedulePane.add(scheduleCard, 3, this.timeLookup.get(timeKey), 1, 2);
+                    } else if (c == 'R') {
+                        this.schedulePane.add(scheduleCard, 4, this.timeLookup.get(timeKey), 1, 3);
+                    } else if (c == 'F') {
+                        this.schedulePane.add(scheduleCard, 5, this.timeLookup.get(timeKey), 1, 2);
+                    }
 
-                Button cross = new Button("X");
-                cross.setOnAction(this::removeFromSchedule);
-                cross.getStyleClass().add("sm");
-                cross.setId("drop");
-                GridPane.setHalignment(cross, HPos.RIGHT);
-                pane.add(cross, 0, 0);
-
-                String timeKey = time.split(" ")[0];
-
-                if (c == 'M') {
-                    schedule.add(pane, 1, this.timeLookup.get(timeKey), 1, 2);
-                } else if (c == 'T') {
-                    schedule.add(pane, 2, this.timeLookup.get(timeKey), 1, 3);
-                } else if (c == 'W') {
-                    schedule.add(pane, 3, this.timeLookup.get(timeKey), 1, 2);
-                } else if (c == 'R') {
-                    schedule.add(pane, 4, this.timeLookup.get(timeKey), 1, 3);
-                } else if (c == 'F') {
-                    schedule.add(pane, 5, this.timeLookup.get(timeKey), 1, 2);
+                    this.currentSchedule.get(classItem.getId()).add(scheduleCard);
                 }
             }
         }
     }
 
-    @FXML
-    private void removeFromSchedule(ActionEvent event) {
-        Pane card = (Pane) ((Button) event.getSource()).getParent();
+    private void removeFromSchedule(Pane card) {
+        ClassItem classItem = this.classes.get(((Label) card.lookup("#class-id")).getText());
 
-        String title = ((Label) card.lookup("#title")).getText();
-        this.removeClass(title);
+        boolean dropClass = this.showConformationDialog("Are you sure you want to drop " + classItem.getId() + "?");
+        if (dropClass) this.removeFromSchedule(classItem);
     }
 
-    private void removeClass(String title) {
-        for (Node node : schedule.lookupAll("#title")) {
-            if (((Label) node).getText().equals(title)) {
-                schedule.getChildren().remove(node.getParent());
-            }
+    private void removeFromSchedule(ClassItem classItem) {
+        for (Node node : this.currentSchedule.get(classItem.getId())) {
+            this.schedulePane.getChildren().remove(node);
         }
 
-        currentClasses.remove(title);
+        this.currentSchedule.remove(classItem.getId());
+    }
+
+    private boolean showConformationDialog(String message) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, message, ButtonType.CANCEL, ButtonType.YES);
+
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.lookupButton(ButtonType.YES).getStyleClass().add("primary");
+        dialogPane.getStylesheets().add(getClass().getResource("bootstrap3.css").toExternalForm());
+
+        this.root.setDisable(true);
+        alert.showAndWait();
+        this.root.setDisable(false);
+
+        return alert.getResult() == ButtonType.YES;
+    }
+
+    @FXML
+    private void submitSchedule(ActionEvent event) {
+        StringBuilder message = new StringBuilder("Do you wish to register for the following courses?");
+
+        for (String classId : this.currentSchedule.keySet()) {
+            message.append("\n\t").append(classId);
+        }
+
+        boolean submit = this.showConformationDialog(message.toString());
+
+        if (submit) {
+            this.confirmedSchedule = new TreeSet<>();
+            this.confirmedSchedule.addAll(this.currentSchedule.keySet());
+        }
+    }
+
+    @FXML
+    private void resetSchedule(ActionEvent event) {
+        StringBuilder message = new StringBuilder("Are you sure you want to reset all changes and revert to the following schedule?");
+
+        for (String classId : this.confirmedSchedule) {
+            message.append("\n\t").append(classId);
+        }
+        boolean reset = this.showConformationDialog(message.toString());
+
+        if (reset) {
+            ArrayList<String> classes = new ArrayList<>(this.currentSchedule.keySet());
+
+            for (String classId : classes) {
+                this.removeFromSchedule(this.classes.get(classId));
+            }
+
+            for (String classId : this.confirmedSchedule) {
+                this.addToSchedule(this.classes.get(classId));
+            }
+        }
     }
 }

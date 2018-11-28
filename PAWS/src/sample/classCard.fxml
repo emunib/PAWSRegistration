@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="60.0" minHeight="60.0" minWidth="300.0" prefHeight="60.0" prefWidth="300.0" styleClass="button"
+            stylesheets="@bootstrap3.css" xmlns="http://javafx.com/javafx/10.0.1">
+   <children>
+      <Label id="class-id" layoutX="20.3" layoutY="14.7" text="Class ID" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label id="class-title" layoutX="20.3" layoutY="30.0" text="Class Title" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="170.0" />
+      <Label id="class-days" layoutX="403.0" layoutY="22.0" text="Days" textAlignment="RIGHT" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="6.0" />
+      <Label id="class-time" layoutX="413.0" layoutY="32.0" text="Class Time" textAlignment="RIGHT" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="50.0" />
+      <Button id="add-class-button" layoutX="477.0" layoutY="18.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="40.0" text="+" AnchorPane.bottomAnchor="4.25" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.25" />
+   </children>
+</AnchorPane>
