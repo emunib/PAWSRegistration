@@ -15,8 +15,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import org.controlsfx.control.CheckComboBox;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
@@ -59,6 +57,9 @@ public class Controller {
     private CheckComboBox<String> levelsDropDown;
 
     @FXML
+    private TabPane coursesTabPane;
+
+    @FXML
     private VBox coursesPane;
 
     @FXML
@@ -84,21 +85,17 @@ public class Controller {
         this.campuses = new TreeSet<>();
         this.levels = new TreeSet<>();
 
-        try {
-            Scanner scanner = new Scanner(new File("src/sample/course_data.txt"));
-            while (scanner.hasNextLine()) {
-                String[] data = scanner.nextLine().split("\t");
-                assert data.length == 8;
+        Scanner scanner = new Scanner(getClass().getResourceAsStream("course_data.txt"));
+        while (scanner.hasNextLine()) {
+            String[] data = scanner.nextLine().split("\t");
+            assert data.length == 8;
 
-                this.classes.put(data[0], new ClassItem(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]));
-                this.subjects.add(data[1]);
-                this.campuses.add(data[6]);
-                this.levels.add(data[7]);
-            }
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            this.classes.put(data[0], new ClassItem(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]));
+            this.subjects.add(data[1]);
+            this.campuses.add(data[6]);
+            this.levels.add(data[7]);
         }
+        scanner.close();
 
         this.confirmedSchedule = new TreeSet<>();
         this.currentSchedule = new TreeMap<>();
@@ -130,6 +127,12 @@ public class Controller {
         }
         this.levelsDropDown.getCheckModel().getCheckedItems().addListener((ListChangeListener<String>) c -> this.updateClasses());
 
+        this.updateClasses();
+    }
+
+    @FXML
+    private void search() {
+        this.coursesTabPane.getSelectionModel().select(1);
         this.updateClasses();
     }
 
