@@ -70,6 +70,9 @@ public class Controller {
     @FXML
     private GridPane schedulePane;
 
+    private ArrayList<Node> selectedSchedule;
+    private Pane selectedCard;
+
     public Controller() {
         this.timeLookup = new HashMap<>();
         String[] times = new String[]{"8:00AM", "8:30AM", "9:00AM", "9:30AM", "10:00AM", "10:30AM", "11:00AM", "11:30AM",
@@ -85,7 +88,7 @@ public class Controller {
         this.levels = new TreeSet<>();
 
         try {
-            Scanner scanner = new Scanner(new File("src/sample/course_data.txt"));
+            Scanner scanner = new Scanner(new File("/home/carter/IdeaProjects/PAWSRegistration/PAWS/src/sample/course_data.txt"));
             while (scanner.hasNextLine()) {
                 String[] data = scanner.nextLine().split("\t");
                 assert data.length == 8;
@@ -231,7 +234,35 @@ public class Controller {
         ((Label) this.detailsPane.lookup("#class-time")).setText(classItem.getTime());
         ((Label) this.detailsPane.lookup("#class-days")).setText(classItem.getDays());
         ((Label) this.detailsPane.lookup("#class-description")).setText(classItem.getDescription());
-        // subject, location, prof, campus, etc.
+
+        // If the schedule exists and isn't empty, it was selected before and should be unselected
+        if (selectedSchedule != null && !selectedSchedule.isEmpty()) {
+            for (int i = 0; i < selectedSchedule.size(); i++) {
+                Node node = selectedSchedule.get(i);
+                node.setStyle("-fx-background-color: rgba(255, 255, 255, 255);");
+            }
+        }
+
+        // Same with the selected card
+        if (selectedCard != null) {
+            selectedCard.setStyle("-fx-background-color: rgba(255, 255, 255, 255);");
+        }
+
+        // If the schedule contains the class id, highlight it
+        if (currentSchedule.containsKey(classItem.getId())) {
+            selectedSchedule = currentSchedule.get(classItem.getId());
+
+            for (int i = 0; i < selectedSchedule.size(); i++) {
+                Node node = selectedSchedule.get(i);
+                node.setStyle("-fx-background-color: rgba(200, 255, 200, 255);");
+
+            }
+        }
+
+        // Set the style of the selected card
+        card.setStyle("-fx-background-color: rgba(200, 255, 200, 255);");
+        selectedCard = card;
+
     }
 
     private boolean canAddClass(ClassItem classItem) {
