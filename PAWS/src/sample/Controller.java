@@ -111,14 +111,23 @@ public class Controller {
 
         this.subjectsDropDown.getItems().clear();
         this.subjectsDropDown.getItems().addAll(this.subjects);
+        for (int i = 0; i < this.subjects.size(); i++) {
+            this.subjectsDropDown.getCheckModel().check(i);
+        }
         this.subjectsDropDown.getCheckModel().getCheckedItems().addListener((ListChangeListener<String>) c -> this.updateClasses());
 
         this.campusesDropDown.getItems().clear();
         this.campusesDropDown.getItems().addAll(this.campuses);
+        for (int i = 0; i < this.campuses.size(); i++) {
+            this.campusesDropDown.getCheckModel().check(i);
+        }
         this.campusesDropDown.getCheckModel().getCheckedItems().addListener((ListChangeListener<String>) c -> this.updateClasses());
 
         this.levelsDropDown.getItems().clear();
         this.levelsDropDown.getItems().addAll(this.levels);
+        for (int i = 0; i < this.levels.size(); i++) {
+            this.levelsDropDown.getCheckModel().check(i);
+        }
         this.levelsDropDown.getCheckModel().getCheckedItems().addListener((ListChangeListener<String>) c -> this.updateClasses());
 
         this.updateClasses();
