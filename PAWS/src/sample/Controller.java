@@ -91,7 +91,6 @@ public class Controller {
         while (scanner.hasNextLine()) {
             String[] data = scanner.nextLine().split("\t");
             assert data.length == 8;
-            System.out.println(data[0]);
             this.classes.put(data[0], new ClassItem(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]));
             this.subjects.add(data[1]);
             this.campuses.add(data[6]);
@@ -254,19 +253,21 @@ public class Controller {
     private void updateSelection(ClassItem classItem) {
         for (String classId : this.coursePanelCards.keySet()) {
             if (classId.equals(classItem.getId())) {
-                this.coursePanelCards.get(classId).setStyle("-fx-background-color: #d9edf7");
+                this.coursePanelCards.get(classId).getStyleClass().add("selected-card");
             } else {
-                this.coursePanelCards.get(classId).setStyle("-fx-background-color: white");
+                this.coursePanelCards.get(classId).getStyleClass().clear();
+                this.coursePanelCards.get(classId).getStyleClass().add("button");
             }
         }
         for (String classId : this.currentSchedule.keySet()) {
             if (classId.equals(classItem.getId())) {
                 for (Node node : this.currentSchedule.get(classId)) {
-                    node.setStyle("-fx-background-color: #d9edf7");
+                    node.getStyleClass().add("selected-card");
                 }
             } else {
                 for (Node node : this.currentSchedule.get(classId)) {
-                    node.setStyle("-fx-background-color: white");
+                    node.getStyleClass().clear();
+                    node.getStyleClass().add("button");
                 }
             }
         }

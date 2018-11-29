@@ -928,3 +928,13 @@ VBox > .split-menu-button.last > .arrow-button {
 .slider:vertical .track {
 	-fx-pref-width: 5;
 }
+
+.selected-card {
+	-fx-background-color: #e1eef5;
+	-fx-border-color: #bedfe6;
+}
+
+.selected-card:hover {
+	-fx-background-color: #d9f2ff;
+	-fx-border-color: #c0ecf5;
+}
