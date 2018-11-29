@@ -71,8 +71,7 @@ public class Controller {
     @FXML
     private GridPane schedulePane;
 
-    private ArrayList<Node> selectedSchedule;
-    private Pane selectedCard;
+    private HashMap<String, Node> coursePanelCards;
 
     public Controller() {
         this.timeLookup = new HashMap<>();
@@ -142,6 +141,7 @@ public class Controller {
     @FXML
     private void updateClasses() {
         this.coursesPane.getChildren().clear();
+        this.coursePanelCards = new HashMap<>();
 
         SortedSet<String> filteredClasses = this.filterClasses();
         if (filteredClasses.isEmpty()) {
@@ -206,6 +206,7 @@ public class Controller {
                                     card.setOnMouseClicked(event -> showDetails(((AnchorPane) event.getSource())));
 
                                     classList.getChildren().add(card);
+                                    coursePanelCards.put(classItem.getId(), card);
                                 }
                             }
                         }
@@ -247,34 +248,28 @@ public class Controller {
         ((Label) this.detailsPane.lookup("#class-days")).setText(classItem.getDays());
         ((Label) this.detailsPane.lookup("#class-description")).setText(classItem.getDescription());
 
-        // If the schedule exists and isn't empty, it was selected before and should be unselected
-        if (selectedSchedule != null && !selectedSchedule.isEmpty()) {
-            for (int i = 0; i < selectedSchedule.size(); i++) {
-                Node node = selectedSchedule.get(i);
-                node.setStyle("-fx-background-color: rgba(255, 255, 255, 255);");
+        this.updateSelection(classItem);
+    }
+
+    private void updateSelection(ClassItem classItem) {
+        for (String classId : this.coursePanelCards.keySet()) {
+            if (classId.equals(classItem.getId())) {
+                this.coursePanelCards.get(classId).setStyle("-fx-background-color: #d9edf7");
+            } else {
+                this.coursePanelCards.get(classId).setStyle("-fx-background-color: white");
             }
         }
-
-        // Same with the selected card
-        if (selectedCard != null) {
-            selectedCard.setStyle("-fx-background-color: rgba(255, 255, 255, 255);");
-        }
-
-        // If the schedule contains the class id, highlight it
-        if (currentSchedule.containsKey(classItem.getId())) {
-            selectedSchedule = currentSchedule.get(classItem.getId());
-
-            for (int i = 0; i < selectedSchedule.size(); i++) {
-                Node node = selectedSchedule.get(i);
-                node.setStyle("-fx-background-color: rgba(200, 255, 200, 255);");
-
+        for (String classId : this.currentSchedule.keySet()) {
+            if (classId.equals(classItem.getId())) {
+                for (Node node : this.currentSchedule.get(classId)) {
+                    node.setStyle("-fx-background-color: #d9edf7");
+                }
+            } else {
+                for (Node node : this.currentSchedule.get(classId)) {
+                    node.setStyle("-fx-background-color: white");
+                }
             }
         }
-
-        // Set the style of the selected card
-        card.setStyle("-fx-background-color: rgba(200, 255, 200, 255);");
-        selectedCard = card;
-
     }
 
     private boolean canAddClass(ClassItem classItem) {
@@ -380,6 +375,7 @@ public class Controller {
                 }
             }
         }
+        updateSelection(classItem);
     }
 
     private void removeFromSchedule(Pane card) {
@@ -395,6 +391,7 @@ public class Controller {
         }
 
         this.currentSchedule.remove(classItem.getId());
+        updateSelection(classItem);
     }
 
     private boolean showConformationDialog(String message) {
