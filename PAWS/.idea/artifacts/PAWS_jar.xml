@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PAWS:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PAWS_jar</output-path>
+    <root id="archive" name="PAWS.jar">
+      <element id="module-output" name="PAWS" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/sample/controlsfx-9.0.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

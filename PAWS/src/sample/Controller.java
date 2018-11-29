@@ -92,7 +92,7 @@ public class Controller {
         while (scanner.hasNextLine()) {
             String[] data = scanner.nextLine().split("\t");
             assert data.length == 8;
-
+            System.out.println(data[0]);
             this.classes.put(data[0], new ClassItem(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]));
             this.subjects.add(data[1]);
             this.campuses.add(data[6]);
